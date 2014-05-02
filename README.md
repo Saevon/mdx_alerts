@@ -12,9 +12,55 @@ A Python Markdown extension that allows you to add twitter-bootstrap based alert
 
 # Usage
 
-Activate the `alerts` extension...
+Activate the `alerts` extension and use the following markup:
 
-TODO: More to come
+```html
+!alert! info
+Wow! this extension works.
+!endalert!
+```
+
+This will give you an alert with a success icon, and the given text.
+
+Check [Twitter Bootstrap](http://getbootstrap.com/components/#alerts) for their alert levels. This plugin makes `error` an alias for `danger` since I feel it is a more intuitive title for that alert level.
+
+You can embed other markup inside the alert, though the result might get a bit crowded. When doing so don't indent the insides, as most of the markdown is processed right before the alerts are. (I tend to do so because it looks better if you indent)
+
+
+### Icon
+
+To get rid of the icon, or specify your own try the following:
+
+```html
+!alert! warning noicon
+    <strong>Noo!</strong>, no icon here!
+!endalert!
+```
+
+```html
+!alert! success unlock-alt
+     <strong>Dang!</strong>, we changed the icon so easily!
+!endalert!
+```
+
+### Dismissable Alerts
+
+You can also get them to have an `x` so that they can be dismissed, just do the following:
+
+```html
+!alert! error dismissable
+     Don't make me go away! Though you can...
+!endalert
+```
+
+Watch out! If you want both a custom/no icon then you need to put them in the right order
+
+```html
+!alert! level dismissable noicon
+    Data!
+!endalert!
+```
+
 
 
 # Troubleshooting
