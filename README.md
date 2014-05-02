@@ -5,17 +5,9 @@ A Python Markdown extension that allows you to add twitter-bootstrap based alert
 
     See: http://getbootstrap.com/components/#alerts
 
-This was created specifically for my Pelican blog, thus might need some more polish and feature removal/addition.
 
 # Installation
 
-Checkout and *easy_install* or *pip install* it:
-
-    $ git clone git://github.com/Saevon/markdown-alerts.git
-    $ cd markdown-alerts
-    $ easy_install .
-
-    # OR if you want to pip install:
     $ pip install git+git://github.com/Saevon/markdown-alerts.git
 
 # Usage
