@@ -1,4 +1,7 @@
-from setuptools import setup, find_packages
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+from setuptools import setup
 
 setup(
     name = "Markdown alerts extension",
@@ -9,6 +12,17 @@ setup(
     author_email = "dot.saevon@gmail.com",
     description = "Markdown alerts extension",
     license = "MIT",
-    keywords = "markdown twitter bootstrap alerts",
     url = "https://github.com/saevon/markdown-alerts",
+    keywords = "markdown twitter bootstrap alerts",
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Environment :: Web Environment',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Topic :: Text Processing :: Filters',
+        'Topic :: Text Processing :: Markup :: HTML'
+    ],
 )
