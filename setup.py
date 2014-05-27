@@ -4,7 +4,7 @@
 from setuptools import setup
 
 setup(
-    name = "Markdown alerts extension",
+    name = "mdx_alerts",
     version = "0.1.0",
     py_modules = ["mdx_alerts"],
     install_requires = ['Markdown>=2.2.0'],
