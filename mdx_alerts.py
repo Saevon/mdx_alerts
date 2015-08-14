@@ -51,7 +51,17 @@ class AlertBlockPreprocessor(Preprocessor):
         'info': 'info-circle',
         'success': 'check-circle',
         'danger': 'warning',
+        'thoughts': 'commenting',
     }
+
+    LEVEL_MAP = {
+        # Note: alert-danger is used instead of alert-error
+        #   Thus error is now an alias for the danger level
+        'error': 'danger',
+        'thoughts': 'info',
+    }
+
+
 
     def __init__(self, md):
         super(AlertBlockPreprocessor, self).__init__(md)
@@ -96,21 +106,22 @@ class AlertBlockPreprocessor(Preprocessor):
         self.alert = True
         self.is_dismissable = match.group('dismissable') is not None
 
-        # Note: alert-danger is used instead of alert-error
-        #   Thus error is now an alias for the danger level
-        self.level = match.group('level')
-        if self.level == 'error':
-            self.level == 'danger'
+        self.name = match.group('level')
 
         # Now we figure out if the user wants an icon
         icon = match.group('icon')
         self.has_icon = True
         if icon is None:
-            self.icon = AlertBlockPreprocessor.ICON_MAP[self.level]
+            self.icon = AlertBlockPreprocessor.ICON_MAP[self.name]
         elif icon != AlertBlockPreprocessor.NO_ICON_FLAG:
             self.has_icon = False
         else:
             self.icon = icon
+
+        # Map the level to the bootstrap class for the level
+        self.level = match.group('level')
+        self.level = AlertBlockPreprocessor.LEVEL_MAP.get(self.name, self.name)
+
 
 
     def end_alert(self, match):
