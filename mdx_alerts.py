@@ -2,9 +2,9 @@
 # -*- coding: UTF-8 -*-
 
 from __future__ import unicode_literals
+import re
 from markdown import Extension
 from markdown.preprocessors import Preprocessor
-import re
 
 
 class AlertBlockExtension(Extension):
@@ -62,12 +62,15 @@ class AlertBlockPreprocessor(Preprocessor):
         'thoughts': 'info',
     }
 
-
-
     def __init__(self, md):
         super(AlertBlockPreprocessor, self).__init__(md)
 
         self.alert = False
+        self.is_dismissable = False
+        self.name = None
+        self.has_icon = None
+        self.icon = None
+        self.level = None
 
     def run(self, lines):
         for index, line in enumerate(lines):
@@ -99,7 +102,6 @@ class AlertBlockPreprocessor(Preprocessor):
 
         return lines
 
-
     def new_alert(self, match):
         '''
         Marks that we've found an open tag, parsing data from it
@@ -122,8 +124,6 @@ class AlertBlockPreprocessor(Preprocessor):
         # Map the level to the bootstrap class for the level
         self.level = match.group('level')
         self.level = AlertBlockPreprocessor.LEVEL_MAP.get(self.name, self.name)
-
-
 
     def end_alert(self, match):
         '''
