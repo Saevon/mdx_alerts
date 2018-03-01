@@ -95,6 +95,10 @@ class AlertBlockPreprocessor(Preprocessor):
 
                     # replace the closing with the appropriate formatting
                     lines[index] = self.format_closed()
+                else:
+                    # Allow alerts to have indented content.
+                    if line.startswith(" " * 4):
+                        lines[index] = lines[index][4:]
 
         return lines
 
