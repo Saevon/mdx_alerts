@@ -19,6 +19,7 @@ class AlertBlockExtension(Extension):
             "_end"
         )
 
+
 class AlertBlockPreprocessor(Preprocessor):
     OPEN_RE = re.compile(
         r'^\s*'
@@ -26,7 +27,7 @@ class AlertBlockPreprocessor(Preprocessor):
             r'!alert!'
         r'\s*'
             # REQUIRED: the alert level
-            r'(?P<level>[a-zA-z]+)'
+            r'(?P<level>[a-zA-Z]+)'
         r'\s*'
             # OPTIONAL: whether the alert is dismissable
             r'(?P<dismissable>dismissable)?'
