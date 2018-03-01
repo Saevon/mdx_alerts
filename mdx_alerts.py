@@ -85,13 +85,9 @@ class AlertBlockPreprocessor(Preprocessor):
                     # replace the opening with the appropriate formatting
                     lines[index] = self.format_open()
 
-                    # Optimization: we don't need to look for an end tag, as they
-                    #    should be on seperate lines
-                    continue
-
             # We also look for any closing tags
             # (but only if we already found an open tag)
-            if self.alert:
+            elif self.alert:
                 match = AlertBlockPreprocessor.CLOSE_RE.search(line)
                 if match is not None:
                     # Mark that we've finished with the alert
@@ -161,5 +157,5 @@ class AlertBlockPreprocessor(Preprocessor):
         return data
 
 
-def makeExtension(configs=None):
-    return AlertBlockExtension(configs=configs)
+def makeExtension(*args, **kwargs):
+    return AlertBlockExtension(*args, **kwargs)
